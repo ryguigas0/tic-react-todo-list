@@ -1,11 +1,14 @@
 import "./App.css";
-import { Header } from "./components";
+import { Content, Header } from "./components";
 
 export function App() {
   return (
     <>
-      <div>Empty project!</div>
-      <Header />
+      <Header/>
+      <Content>
+        <h1>Title</h1>
+        <p>Lorem ipsum dolor sit amet</p>
+      </Content>
     </>
   );
 }
