@@ -1,11 +1,11 @@
 import "./App.css";
+import { Header } from "./components";
 
-function App() {
+export function App() {
   return (
     <>
       <div>Empty project!</div>
+      <Header />
     </>
   );
 }
-
-export default App;
