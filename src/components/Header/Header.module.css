@@ -1,6 +1,6 @@
 .Header {
     color: var(--color-primary);
-    background-color: var(--color-seconday);
+    background-color: var(--color-secondary);
     padding: 1rem;
     font-size: 1.2rem;
 }

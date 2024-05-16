@@ -1,14 +1,15 @@
 import "./App.css";
-import { Content, Header } from "./components";
+import { Content, Header, Footer } from "./components";
 
 export function App() {
   return (
     <>
-      <Header/>
+      <Header />
       <Content>
         <h1>Title</h1>
         <p>Lorem ipsum dolor sit amet</p>
       </Content>
+      <Footer creatorName={"Guilherme"} />
     </>
   );
 }
