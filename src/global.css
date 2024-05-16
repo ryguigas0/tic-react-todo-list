@@ -1,0 +1,20 @@
+:root {
+    --color-primary: #FFFCF2;
+    --color-seconday: #403D39;
+    --color-highlight: #EB5E28;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-primary);
+}
+
+body, input, textarea, button {
+    font-size: 1rem;
+    font-family: sans-serif;
+}
