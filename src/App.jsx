@@ -1,15 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Content, Header, Footer } from "./components";
 import { HomePage } from "./pages";
+import { Router } from "./router";
 
 export function App() {
   return (
-    <>
-      <Header />
-      <Content>
-        <HomePage />
-      </Content>
-      <Footer creatorName={"Guilherme"} />
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
