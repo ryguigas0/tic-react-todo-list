@@ -1,27 +1,19 @@
 import { useState } from "react";
 import { SubmitButton, TextInput } from "../../components";
 import style from "./CreateTodoForm.module.css";
+import { useAppContext } from "../../hooks";
 
-export function CreateTodoForm({ todos, setTodos }) {
+export function CreateTodoForm(props) {
+  const { addTodo } = useAppContext();
   const [todoName, setTodoName] = useState("Create an todo!");
 
-  const addTodo = (e) => {
+  const submit = (e) => {
     e.preventDefault();
-
-    if (!todoName) return;
-
-    const newTodoList = [].concat(todos, [
-      {
-        todo: todoName,
-        id: todos.length + 1,
-      },
-    ]);
-
-    setTodos(newTodoList);
+    addTodo(todoName);
   };
 
   return (
-    <form className={style.CreateTodoForm} onSubmit={addTodo}>
+    <form className={style.CreateTodoForm} onSubmit={submit}>
       <TextInput
         value={todoName}
         onChange={(e) => setTodoName(e.currentTarget.value)}

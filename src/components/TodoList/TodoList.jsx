@@ -2,11 +2,15 @@ import { TodoItem } from "../../components";
 
 import style from "./TodoList.module.css";
 
-export function TodoList({ todos }) {
+import { useAppContext } from "../../hooks";
+
+export function TodoList() {
+  const { todos } = useAppContext();
+
   return (
     <ul className={style.TodoList}>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo.todo} />
+        <TodoItem key={todo.id} id={todo.id} todo={todo.todo} />
       ))}
     </ul>
   );
