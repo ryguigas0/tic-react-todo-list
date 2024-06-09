@@ -1,11 +1,12 @@
 .SubmitButton {
     border-radius: 30%;
-    width: 36px;
+    min-width: 36px;
     height: 100%;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     background-color: #fff;
     color: var(--color-secondary);
     border-color: var(--color-secondary);
+    padding: 0.2rem;
 }
 
 .SubmitButton[btnType='primary']:hover {
