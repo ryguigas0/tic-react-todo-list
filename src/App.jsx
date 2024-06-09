@@ -1,13 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import { Content, Header, Footer } from "./components";
-import { HomePage } from "./pages";
 import { Router } from "./router";
+
+import { AppContextProvider } from "./contexts";
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <AppContextProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </AppContextProvider>
   );
 }
