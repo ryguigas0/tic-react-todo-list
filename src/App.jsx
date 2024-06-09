@@ -1,13 +1,13 @@
 import "./App.css";
 import { Content, Header, Footer } from "./components";
+import { HomePage } from "./pages";
 
 export function App() {
   return (
     <>
       <Header />
       <Content>
-        <h1>Title</h1>
-        <p>Lorem ipsum dolor sit amet</p>
+        <HomePage />
       </Content>
       <Footer creatorName={"Guilherme"} />
     </>

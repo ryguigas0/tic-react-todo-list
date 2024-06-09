@@ -1,3 +1,6 @@
 export * from './Header'
 export * from './Content'
-export * from "./Footer"
+export * from './Footer'
+export * from './CreateTodoForm'
+export * from './TextInput'
+export * from './SubmitButton'

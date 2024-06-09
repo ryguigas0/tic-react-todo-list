@@ -1,0 +1,4 @@
+.TextInput {
+    border-color: var(--color-secondary);
+    padding: 0.2rem 4rem;
+}

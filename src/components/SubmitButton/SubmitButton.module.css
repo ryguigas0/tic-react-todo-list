@@ -1,0 +1,31 @@
+.SubmitButton {
+    border-radius: 30%;
+    width: 36px;
+    height: 100%;
+    font-size: 1.6rem;
+    background-color: #fff;
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.SubmitButton[btnType='primary']:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.SubmitButton[btnType='primary']:focus {
+    background-color: var(--color-highlight);
+    color: var(--color-primary);
+}
+
+.SubmitButton[btnType='secondary']:hover {
+    background-color: var(--color-highlight);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.SubmitButton[btnType='secondary']:focus {
+    background-color: var(--color-highlight2);
+    color: var(--color-primary);
+}
