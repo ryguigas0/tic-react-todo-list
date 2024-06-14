@@ -1,53 +1,73 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { generateId } from "../util/generateId";
+import { api } from "../services";
 
 export const AppContext = createContext({});
 
 export function AppContextProvider({ children }) {
   const [creator, setCreator] = useState("Guilherme");
 
-  const [todos, setTodos] = useState([
-    {
-      id: generateId(),
-      todo: "Todo 1",
-    },
-    {
-      id: generateId(),
-      todo: "Todo 2",
-    },
-    {
-      id: generateId(),
-      todo: "Todo 3",
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
 
-  const addTodo = (todoName) => {
+  const loadTodos = async () => {
+    const response = await api.get("/todos");
+
+    // console.log({ response });
+
+    if (response.status === 200) {
+      setTodos([...response.data]);
+    }
+  };
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
+  const addTodo = async (todoName) => {
     if (!todoName) return;
 
-    const newTodo = {
-      todo: todoName,
-      id: generateId(),
-    };
+    // const newTodo = {
+    //   todo: todoName,
+    //   id: generateId(),
+    // };
 
-    setTodos([...todos, newTodo]);
+    // setTodos([...todos, newTodo]);
+
+    const response = await api.post("/todos", { todo: todoName });
+
+    if (response.status === 201) {
+      const newTodo = response.data;
+
+      setTodos([...todos, newTodo]);
+    }
   };
 
-  const removeTodo = (todoId) => {
-    setTodos((currTodos) => {
-      const newTodoList = currTodos.filter((t) => t.id !== todoId);
+  const removeTodo = async (todoId) => {
+    const response = await api.delete("/todos/" + todoId);
 
-      return [...newTodoList];
-    });
+    if (response.status === 200) {
+      setTodos((currTodos) => {
+        const newTodoList = currTodos.filter((t) => t.id !== todoId);
+
+        return [...newTodoList];
+      });
+    }
   };
 
-  const updateTodo = (todoId, newTodovalue) => {
-    setTodos((currTodos) => {
-      const newTodoList = currTodos.map((t) =>
-        t.id === todoId ? { ...t, todo: newTodovalue } : t
-      );
-
-      return [...newTodoList];
+  const updateTodo = async (todoId, newTodovalue) => {
+    const response = await api.put("/todos/" + todoId, {
+      todo: newTodovalue,
     });
+
+    if (response.status === 200) {
+      setTodos((currTodos) => {
+        const newTodoList = currTodos.map((t) =>
+          t.id === todoId ? { ...t, todo: newTodovalue } : t
+        );
+
+        return [...newTodoList];
+      });
+    }
   };
 
   return (

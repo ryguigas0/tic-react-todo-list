@@ -7,7 +7,10 @@ import { useAppContext } from "../../hooks";
 export function TodoList() {
   const { todos } = useAppContext();
 
-  console.log({ todos });
+  if(todos.length === 0 ) return (
+    <h3>There are no todos, greate job!</h3>
+  )
+
   return (
     <ul className={style.TodoList}>
       {todos.map((todo) => (
