@@ -7,6 +7,7 @@ import { useAppContext } from "../../hooks";
 export function TodoList() {
   const { todos } = useAppContext();
 
+  console.log({ todos });
   return (
     <ul className={style.TodoList}>
       {todos.map((todo) => (
