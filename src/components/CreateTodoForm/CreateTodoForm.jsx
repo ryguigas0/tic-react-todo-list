@@ -6,10 +6,15 @@ import { useAppContext } from "../../hooks";
 export function CreateTodoForm(props) {
   const { addTodo } = useAppContext();
   const [todoName, setTodoName] = useState("Create an todo!");
+  const [loading, setLoading] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    addTodo(todoName);
+    if (!loading) {
+      setLoading(true);
+      await addTodo(todoName);
+      setLoading(false);
+    }
   };
 
   return (
@@ -18,7 +23,7 @@ export function CreateTodoForm(props) {
         value={todoName}
         onChange={(e) => setTodoName(e.currentTarget.value)}
       />
-      <SubmitButton text="+" type="primary" />
+      <SubmitButton text={loading ? "🔄️" : "+"} type="primary" />
     </form>
   );
 }
