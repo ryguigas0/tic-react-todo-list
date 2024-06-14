@@ -7,7 +7,7 @@ export const AppContext = createContext({});
 export function AppContextProvider({ children }) {
   const [creator, setCreator] = useState("Guilherme");
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(null);
 
   const loadTodos = async () => {
     const response = await api.get("/todos");
